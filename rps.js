@@ -5,6 +5,7 @@ function computerPlay(){
     return rps[random];
 }
 function playRound(playerSelect){
+    finalResults.textContent = '';
     computerSelection = computerPlay();
     playerSelection = playerSelect.toLowerCase();
 
@@ -54,13 +55,13 @@ function playRound(playerSelect){
     score.textContent = 'Your score is: ' + p + '. The computer\'s score is: ' + c + '. You tied ' + t + ' times so far.';
 
     if(p === 5){
-        alert('You Win!');
+        finalResults.textContent = 'You win! You won five rounds first.';
         p = 0;
         c = 0;
         t = 0;
     }
     else if(c === 5){
-        alert('You Lose!');
+        finalResults.textContent = 'You lost! The computer won five rounds first.';
         p = 0;
         c = 0;
         t = 0;
@@ -77,6 +78,7 @@ const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 const results = document.getElementById('results');
 const score = document.getElementById('score');
+const finalResults = document.getElementById('final-results');
 
 rock.addEventListener('click', function(e) {
     playRound(e.target.textContent);
