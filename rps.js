@@ -1,89 +1,92 @@
-let p = 0;
-let c = 0;
-
 function computerPlay(){
     const rps = ['rock', 'paper', 'scissors'];
     const random = Math.floor(Math.random() * rps.length);
 
     return rps[random];
 }
+function playRound(playerSelect){
+    computerSelection = computerPlay();
+    playerSelection = playerSelect.toLowerCase();
 
-function playerPlay(){
-    let user = prompt("Rock, paper, or scissors?")
-
-    return user.toLowerCase();
-}
-
-function playRound(playerSelection, computerSelection){
     if(playerSelection === 'rock'){
         if(computerSelection === 'paper'){
-            console.log('You lose! Paper beats Rock.');
+            results.textContent = 'You lose! Paper beats Rock.';
             c++;
-            return 'You lose! Paper beats Rock.';
         }
         if(computerSelection === 'rock'){
-            console.log('Tie!');
-            return 'Tie! Try again.';
+            results.textContent = 'Tie! Both picked Rock.';
+            t++;
         }
         if(computerSelection === 'scissors'){
+            results.textContent = 'You win! Rock beats Scissors.';
             p++;
-            return 'You win! Rock beats Scissors.';
         }
     }
     else if(playerSelection === 'paper'){
         if(computerSelection === 'scissors'){
-            console.log('You lose! Scissors beats Paper.');
+            results.textContent = 'You lose! Scissors beats Paper.';
             c++;
-            return 'You lose! Scissors beats Paper.';
         }
         if(computerSelection === 'paper'){
-            console.log('Tie!');
-            return 'Tie! Try again.';
+            results.textContent = 'Tie! Both picked Paper.';
+            t++;
         }
         if(computerSelection === 'rock'){
-            console.log('You win! Paper beats Rock.');
+            results.textContent = 'You win! Paper beats Rock.';
             p++;
-            return 'You win! Paper beats Rock.';
         }
     }
     else if(playerSelection === 'scissors'){
         if(computerSelection === 'rock'){
-            console.log('You lose! Rock beats Paper.');
+            results.textContent = 'You lose! Rock beats Paper.';
             c++;
-            return 'You lose! Rock beats Paper.';
         }
         if(computerSelection === 'scissors'){
-            console.log('Tie!');
-            return 'Tie! Try again.';
+            results.textContent = 'Tie! Both picked Scissors.';
+            t++;
         }
         if(computerSelection === 'paper'){
-            console.log('You win! Scissors beats paper');
+            results.textContent = 'You win! Scissors beats Paper.';
             p++;
-            return 'You win! Scissors beats paper';
         }
     }
-    else{
-        console.log('Invalid move selected');
-        return 'Invalid move selected';
+
+    score.textContent = 'Your score is: ' + p + '. The computer\'s score is: ' + c + '. You tied ' + t + ' times so far.';
+
+    if(p === 5){
+        alert('You Win!');
+        p = 0;
+        c = 0;
+        t = 0;
     }
+    else if(c === 5){
+        alert('You Lose!');
+        p = 0;
+        c = 0;
+        t = 0;
+    }
+
+
 }
 
-function game(){
-    for(let i = 0; i <= 4; i++){
-        playRound(playerPlay(), computerPlay());
-    }
-    if(p > c){
-        console.log('You won ' + p + ' rounds and the computer won ' + c + ' rounds. You win!');
-    }
-    if(c > p){
-        console.log('You won ' + p + ' rounds and the computer won ' + c + ' rounds. You lose!');
-    }
-    if(p === c){
-        console.log('You won ' + p + ' rounds and the computer won ' + c + ' rounds. You tied!');
-    }
-}
+let p = 0;
+let c = 0;
+let t = 0;
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+const results = document.getElementById('results');
+const score = document.getElementById('score');
 
-game();
+rock.addEventListener('click', function(e) {
+    playRound(e.target.textContent);
+});
 
+paper.addEventListener('click', function(e) {
+    playRound(e.target.textContent);
+});
 
+scissors.addEventListener('click', function(e) {
+    playRound(e.target.textContent);
+});
 

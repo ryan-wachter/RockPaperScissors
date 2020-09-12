@@ -1,0 +1,31 @@
+#rock, #paper, #scissors{
+    background-color: #f2f2f2;
+    color: #5F6368;
+    margin: 5px 4px;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    padding: 0px 15px;
+    height: 36px;
+    font-size: 14px;
+    text-align: center;
+    min-width: 54px;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#score{
+    padding-top: 20px;
+}
+
+#results{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+#button-div{
+    margin-top: 250px;
+}
