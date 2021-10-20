@@ -1,3 +1,5 @@
-# RockPaperScissors
+# Rock, Paper, Scissors
 
-Play Rock, Paper, Scissors against the computer.
+Created using HTML, CSS3, and JavaScript.
+
+A Rock, Paper, Scissors simulation where the user competes against the computer.
